@@ -9,7 +9,6 @@ logging.basicConfig(level=logging.INFO)
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 CALENDAR_URL = "https://www.sefaria.org/api/calendars"
-SEFARIA_TEXT_BASE = "https://www.sefaria.org/api/texts"
 
 def fetch_calendar_text(title_en):
     response = requests.get(CALENDAR_URL)
@@ -23,7 +22,7 @@ def fetch_calendar_text(title_en):
     if not url:
         return None, f"{title_en} not found"
 
-    text_response = requests.get(f"{SEFARIA_TEXT_BASE}/{url}")
+    text_response = requests.get(f"https://www.sefaria.org/api/v3/texts/{url}")
     print(f"Response from Sefaria for {title_en}: {text_response.json()}")
     if text_response.status_code != 200:
         return None, f"Error fetching text for {title_en}: {text_response.status_code}"
