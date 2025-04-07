@@ -13,6 +13,7 @@ SEFARIA_TEXT_BASE = "https://www.sefaria.org/api/texts"
 
 def fetch_calendar_text(title_en):
     response = requests.get(CALENDAR_URL)
+    print(f"Response from Sefaria for calendar: {response.json()}")
     if response.status_code != 200:
         return None, f"Error fetching calendar: {response.status_code}"
 
@@ -23,6 +24,7 @@ def fetch_calendar_text(title_en):
         return None, f"{title_en} not found"
 
     text_response = requests.get(f"{SEFARIA_TEXT_BASE}/{url}")
+    print(f"Response from Sefaria for {title_en}: {text_response.json()}")
     if text_response.status_code != 200:
         return None, f"Error fetching text for {title_en}: {text_response.status_code}"
 
@@ -83,11 +85,15 @@ def summarize_tanya_and_rambam():
     if error:
         return jsonify({"error": f"Tanya: {error}"}), 500
 
+    print(f"Tanya text fetched: {tanya_text}")
+
     # --- Fetch Rambam ---
     print("fetching Rambam")
     rambam_text, error = fetch_calendar_text("Daily Rambam (3 Chapters)")
     if error:
         return jsonify({"error": f"Rambam: {error}"}), 500
+
+    print(f"Rambam text fetched: {rambam_text}")
 
     # --- Summarize Tanya ---
     print("summarizing Tanya")
