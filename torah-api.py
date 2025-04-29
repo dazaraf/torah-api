@@ -112,7 +112,7 @@ def summarize_text(input_content, label):
         },
         {
             "role": "user",
-            "content": "Summarize the following {label} text for a spiritually engaged Jewish audience. Highlight the heart of the idea, use engaging and uplifting language, and end with a bold, inspiring takeaway that calls the reader to action or reflection:\n\n{input_content}"
+            "content": f"Summarize the following {label} text for a spiritually engaged Jewish audience. Highlight the heart of the idea, use engaging and uplifting language, and end with a bold, inspiring takeaway that calls the reader to action or reflection:\n\n{input_content}"
         }
         ],
         "temperature": 0.4,
