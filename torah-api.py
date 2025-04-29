@@ -106,14 +106,14 @@ def summarize_text(input_content, label):
     payload = {
         "model": "deepseek-chat",
         "messages": [
-            {
-                "role": "system",
-                "content": "You are a powerful and exciting Jewish content summarizer. Your job is to create compelling, accurate summaries for torah texts in under 400 words."
-            },
-            {
-                "role": "user",
-                "content": f"Summarize the following {label} text for social media. Use short paragraphs, line breaks, and end with a call to action:\n\n{input_content}"
-            }
+        {
+            "role": "system",
+            "content": "You are a powerful and emotionally engaging Jewish Torah summarizer. Your job is to take a piece of Torah (Tanya, Rambam, Halacha, or Daf Yomi) and transform it into a short, compelling summary that speaks to the modern Jewish soul. Keep it under 400 words. Use clear language, poetic rhythm, short paragraphs, and line breaks for readability. Your tone should be warm, soulful, and inspiring—like a caring chavruta or mashpia. Focus on the *core spiritual insight* and end with a practical or emotional call to action."
+        },
+        {
+            "role": "user",
+            "content": "Summarize the following {label} text for a spiritually engaged Jewish audience. Highlight the heart of the idea, use engaging and uplifting language, and end with a bold, inspiring takeaway that calls the reader to action or reflection:\n\n{input_content}"
+        }
         ],
         "temperature": 0.4,
         "max_tokens": 1000
